@@ -1,0 +1,45 @@
+
+/* Layout for donate amount and button */
+.donate_form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 18rem;
+}
+
+/* Center form horizontally and vertically */
+.form_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Styling for input field */
+.donation_input {
+    
+    /* Custom colors */
+    --main-color: rgb(46, 213, 115);
+
+    width: 50%;
+    margin: 0 auto;
+    display: block;
+
+    /* Same style as buttons */
+    color: var(--main-color);
+    background-color: rgba(46, 213, 116, 0.1);
+    border: 1px solid var(--main-color);
+    border-radius: 4px;
+
+    padding: 0.5rem 0.5rem;
+    outline: none;
+    transition: box-shadow 0.2s ease-in-out;
+}
+
+/* Styling for placeholder text */
+.donation_input::placeholder {
+    color: var(--main-color);
+    opacity: 1;
+    font-weight: 900;
+    text-align: center;
+  }

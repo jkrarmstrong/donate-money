@@ -1,0 +1,73 @@
+.donate_btn {
+
+    /* Custom color variables */
+    --main-color: rgb(46, 213, 115);
+    --main-bg-color: rgba(46, 213, 116, 0.36);
+    --pattern-color: rgba(46, 213, 116, 0.073);
+  
+    /* Basic button styling */
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+
+    /* Creates a layered background with 2-grid like pattern */
+    background: radial-gradient(
+        circle,
+        var(--main-bg-color) 0%,
+        rgba(0, 0, 0, 0) 95%
+      ),
+      linear-gradient(var(--pattern-color) 1px, transparent 1px),
+      linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+
+    /* Set size for the 3 background layers */  
+    background-size:
+      cover,
+      15px 15px,
+      15px 15px;
+    
+    /* Align all background layers */
+    background-position:
+      center center,
+      center center,
+      center center;
+    
+    /* Set border */
+    border-image: radial-gradient(
+        circle,
+        var(--main-color) 0%,
+        rgba(0, 0, 0, 0) 100%
+      )
+      1;
+    
+    /* Set border for only top and bottom */
+    border-width: 1px 0 1px 0;
+
+    /* Text and layout */
+    color: var(--main-color);
+    padding: 1.5rem 4rem;
+    font-weight: 700;
+    font-size: 2.5rem;
+    transition: background-size 0.2s ease-in-out;
+  }
+
+  /* Shrinks 2D layer on hover */
+  .donate_btn:hover {
+    background-size:
+      cover,
+      10px 10px,
+      10px 10px;
+  }
+
+  /* Preset buttons */
+  .preset_btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+
+  /* Div for all preset buttons */
+  .preset_buttons {
+    display: flex;
+    gap: 0.4rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }

@@ -1,5 +1,7 @@
 /* Imports */
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("buttons.css");
+@import url("form.css");
 
 
 /* Body */
@@ -25,19 +27,17 @@ body {
 
 }
 
+/* Styling for logo */
 .logo {
     height: 100px;
     width: auto;
     font-weight: bold;
 }
 
+/* Styling for header link */
 .nav_link {
     font-weight: 530;
-}
-
-.nav_items .nav_link {
-    text-decoration: none;
-    font-size: 1.5rem;
     color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
 }
-

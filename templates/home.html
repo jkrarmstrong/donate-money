@@ -6,20 +6,36 @@
     <title>Testing..</title>
 </head>
 <body>
+
     <header>
         <div class="container">
-            <div class="header_wrapper>">
-                <div class="header_nav">
-                    <a href="#" class="nav_logo">
-                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo" class="logo">
-                    </a>
-                    <div class="nav_items">
-                        <a href="#" class="nav_link">About</a>
-                    </div>
+            <div class="header_nav">
+                <a href="#" class="nav_logo">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo" class="logo">
+                </a>
+                <div class="nav_items">
+                    <a href="#" class="nav_link">About</a>
                 </div>
             </div>
         </div>
-          
     </header>
+
+    <div class="form_wrapper">
+        <!-- Donation form -->
+        <form action="/create-checkout-session" method="POST" class="donate_form">
+            <!-- Preset buttons -->
+            <div class="preset_buttons">
+                <button type="button" class="donate_btn preset_btn" data-amount="1">1$</button>
+                <button type="button" class="donate_btn preset_btn" data-amount="10">10$</button>
+                <button type="button" class="donate_btn preset_btn" data-amount="100">100$</button>
+                <button type="button" class="donate_btn preset_btn" data-amount="1000">1000$</button>
+            </div>
+            <!-- Amount input field and donate button -->
+            <input name="amount" placeholder="$$$" required class="donation_input">
+            <button type="submit" class="donate_btn">DONATE</button>
+        </form>
+    </div>
+    <!-- JS scripts -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>
 </html>

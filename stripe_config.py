@@ -1,5 +1,16 @@
 # --- Imports ---
 import stripe
 import os
+from dotenv import load_dotenv
 
-stripe.api_key = "my_own_key"
+# Load all enviroment variables
+load_dotenv()
+
+
+# --- API Keys ---
+# Secret key (test)
+stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
+# Publishable key (test)
+STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY")
+
+
