@@ -6,7 +6,7 @@
     <title>Testing..</title>
 </head>
 <body>
-
+    <!-- Header section -->
     <header>
         <div class="container">
             <div class="header_nav">
@@ -14,15 +14,31 @@
                     <img src="{{ url_for('static', filename='images/logo.png') }}" alt="logo" class="logo">
                 </a>
                 <div class="nav_items">
-                    <a href="#" class="nav_link">About</a>
+                    <a href="#about" class="nav_link">About</a>
                 </div>
             </div>
         </div>
     </header>
+    
+    <!-- About text -->
+     <section id="about" class="about_section">
+        <h2 class="about_heading">What is this?</h2>
+        <p class="about_text">
+            This is a completely legitimate website where you can donate money to me – for absolutely no reason.  
+            No charity, no rewards, just pure, unapologetic cash flow in my direction. 
+            Your generosity may not change the world, but it will greatly improve my mood.
+        </p>
+     </section>
 
     <div class="form_wrapper">
         <!-- Donation form -->
         <form action="/create-checkout-session" method="POST" class="donate_form">
+            <!-- Total amount display -->
+            <div class="total_donations donate_btn">
+                <span class="span_text">Total donated:</span> 
+                <span class="span_sum">${{ total_donations }}</span>
+            </div>
+            
             <!-- Preset buttons -->
             <div class="preset_buttons">
                 <button type="button" class="donate_btn preset_btn" data-amount="1">1$</button>
@@ -35,6 +51,10 @@
             <button type="submit" class="donate_btn">DONATE</button>
         </form>
     </div>
+    <!-- Footer section -->
+    <footer class="footer_section">
+        <p>&copy {{now.year }} John Armstrong - All money goes to me.</p>
+    </footer>
     <!-- JS scripts -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>

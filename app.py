@@ -2,7 +2,10 @@
 from flask import Flask, render_template, redirect, request, jsonify, url_for
 from flask_cors import CORS
 import stripe
+import click
+from database import initialize_database, add_donation, clear_donations, get_total_donations
 from stripe_config import stripe
+from datetime import datetime
 
 
 # ---  Initialize Flask application ---
@@ -11,17 +14,44 @@ CORS(app) # lets frontend call backend with fetch/form
 app.config['DEBUG'] = True
 
 
+# --- Initialize database ---
+@app.cli.command("init-db")
+def init_db_command():
+    """Initialize database."""
+    initialize_database()
+    click.echo("Database initialized.")
+
+
+# --- Clear all database content ----
+@app.cli.command("clear-db")
+def clear_db_command():
+    """Clear donations db content."""
+    clear_donations()
+    click.echo("All donations are cleared.")
+
+
 # --- Routes ---
 
 # Route for home/index
-@app.route('/')
+@app.route("/")
 def home():
-    return render_template("home.html")
+    total_donations = get_total_donations()
+    return render_template("home.html", total_donations=total_donations, now=datetime.now())
 
 
 # Route for success after payment
 @app.route("/success")
 def success():
+    session_id = request.args.get("session_id")
+    if not session_id:
+        return "Ingen session ID", 400
+
+    session = stripe.checkout.Session.retrieve(session_id)
+    amount_total = session.get("amount_total", 0)
+    amount_in_usd = int(amount_total / 100)
+
+    add_donation(amount_in_usd)
+    
     return render_template("success.html")
 
 
@@ -54,7 +84,7 @@ def create_checkout_session():
                 "quantity": 1
             }],
             mode="payment", # One-time payment
-            success_url=url_for("success", _external=True), # Redirect if success/no success
+            success_url=url_for("success", _external=True) + "?session_id={CHECKOUT_SESSION_ID}", # Redirect if success/no success
             cancel_url=url_for("cancel", _external=True),
         )
         # Redirect user to Stripe Checkout page
@@ -63,6 +93,7 @@ def create_checkout_session():
         return jsonify(error=str(e)), 400
 
 
+
 # --- Flask main entry point ---
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5000)

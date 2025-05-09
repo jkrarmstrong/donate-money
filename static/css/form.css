@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
-    margin-top: 18rem;
+    margin-top: 2rem;
 }
 
 /* Center form horizontally and vertically */
@@ -12,7 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    margin-top: 2rem;
 }
 
 /* Styling for input field */
@@ -43,3 +43,39 @@
     font-weight: 900;
     text-align: center;
   }
+
+
+/* Styling for total amount display */
+.total_donations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 1.5rem;
+    padding: 1.5rem 3rem;
+    margin-bottom: 1.5rem;
+    pointer-events: none;
+    cursor: default;
+
+    /* Overwrite border from donate_btn */
+    border-style: solid;
+    border-width: 10px 10px;
+    border-image: radial-gradient(
+        circle,
+        var(--main-color) 0%,
+        rgba(0, 0, 0, 0) 100%
+    ) 1;
+}
+
+.span_text {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.span_sum {
+    font-size: 2rem;
+    font-weight: 700;
+}
