@@ -42,15 +42,15 @@ def home():
 # Route for success after payment
 @app.route("/success")
 def success():
-    session_id = request.args.get("session_id")
-    if not session_id:
-        return "Ingen session ID", 400
+    # session_id = request.args.get("session_id")
+    # if not session_id:
+    #     return "Ingen session ID", 400
 
-    session = stripe.checkout.Session.retrieve(session_id)
-    amount_total = session.get("amount_total", 0)
-    amount_in_usd = int(amount_total / 100)
+    # session = stripe.checkout.Session.retrieve(session_id)
+    # amount_total = session.get("amount_total", 0)
+    # amount_in_usd = int(amount_total / 100)
 
-    add_donation(amount_in_usd)
+    # add_donation(amount_in_usd)
     
     return render_template("success.html")
 

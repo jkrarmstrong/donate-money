@@ -1,0 +1,31 @@
+
+
+/* Body */
+body {
+    font-family: "Space Mono", monospace;
+    margin: 0;
+    background-image: url("../images/money.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1, p {
+    color: red;
+}
+
+.success_container, .cancel_container {
+    text-align: center;
+    margin: 40vh auto;
+
+}
+
+.home_btn {
+    text-decoration: none;
+    display: inline-block;
+    color: red;
+}
+
+.home_btn:hover {
+    color: green;
+    text-transform: uppercase;
+}
