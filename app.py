@@ -11,7 +11,6 @@ from datetime import datetime
 # ---  Initialize Flask application ---
 app = Flask(__name__)
 CORS(app) # lets frontend call backend with fetch/form
-app.config['DEBUG'] = True
 
 
 # --- Initialize database ---
@@ -42,15 +41,15 @@ def home():
 # Route for success after payment
 @app.route("/success")
 def success():
-    # session_id = request.args.get("session_id")
-    # if not session_id:
-    #     return "Ingen session ID", 400
+    session_id = request.args.get("session_id")
+    if not session_id:
+        return "Ingen session ID", 400
 
-    # session = stripe.checkout.Session.retrieve(session_id)
-    # amount_total = session.get("amount_total", 0)
-    # amount_in_usd = int(amount_total / 100)
+    session = stripe.checkout.Session.retrieve(session_id)
+    amount_total = session.get("amount_total", 0)
+    amount_in_usd = int(amount_total / 100)
 
-    # add_donation(amount_in_usd)
+    add_donation(amount_in_usd)
     
     return render_template("success.html")
 
@@ -96,4 +95,4 @@ def create_checkout_session():
 
 # --- Flask main entry point ---
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(host="0.0.0.0", port=5000)
