@@ -9,6 +9,10 @@ from datetime import datetime
 import os
 
 
+# --- Initialize database ---
+initialize_database()
+
+
 # ---  Initialize Flask application ---
 app = Flask(__name__)
 CORS(app) # lets frontend call backend with fetch/form
